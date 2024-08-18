@@ -42,13 +42,8 @@ new_test_df = pd.get_dummies(test_df, columns=["MTRANS",
 X = new_df.drop(columns=["NObeyesdad", "id"])
 
 y = df["NObeyesdad"]
-"""
-top mi scores:
-Weight
-bmi
-Height
-Age
-"""
+
+
 X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.3, random_state=42)
 X_test = new_test_df.drop(columns="id")
 
@@ -59,13 +54,7 @@ No missing values
 will scale
 """
 # Scaling
-"""
-Label enconding:(CAEC, CALC) 
-FCVC, NCP, CH2O, 
-FAF, TUE,  NObesity(target)
 
-pd.get_dummies: FAVC, SMOKE, SCC, MTRANS, Gender, family_history_with_overweight
-"""
 # Label encoder has the same functionality as Ordinal ecnoder
 # one is only for labels(targets) and the other for features
 label_encoder = LabelEncoder()
@@ -125,7 +114,3 @@ answer = pd.DataFrame(
 )
 answer.to_csv("answer.csv", index=False)
 
-# with open("answer.csv","w") as file:
-#     file.write(f"id,NObeyesdad\n")
-#     for ID, answer in zip(new_test_df["id"], test_pred_labels):
-#         file.write(f"{ID},{answer}\n")
